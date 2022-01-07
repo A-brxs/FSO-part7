@@ -77,13 +77,13 @@ const App = () => {
           name="password"
         />
       </div>
-      <button type="submit" id='login-button'>login</button>
+      <button className='button is-small is-light' type="submit" id='login-button'>login</button>
     </form>
   )
 
   const blogList = () => (
     <div>
-      <h2>blogs</h2>
+      <h2 className='title is-2'>blogs</h2>
       <div id='blog-list'>
         {blogs
           .sort( (a,b) => b.likes - a.likes )
@@ -96,7 +96,7 @@ const App = () => {
   )
 
   const logoutForm = () => (
-    <button onClick={() => handleLougout()}>LOGOUT</button>
+    <button className='button is-warning is-small' onClick={() => handleLougout()}>LOGOUT</button>
   )
   const padding = {
     padding: 5
@@ -106,12 +106,14 @@ const App = () => {
   return (
     <Router>
       <div>
-        <div>
-          <Link style={padding} to="/">home</Link>
-          <Link style={padding} to="/blogs">blogs</Link>
-          <Link style={padding} to="/users">users</Link>
+        <div className='breadcrumb is-large has-background-grey' aria-label='breadcrumbs'>
+          <ul>
+            <Link style={padding} className='has-text-danger' to="/">home</Link>
+            <Link style={padding} className='has-text-danger' to="/blogs">blogs</Link>
+            <Link style={padding} className='has-text-danger' to="/users">users</Link>
+          </ul>
         </div>
-        <h1>Blog system</h1>
+        <h1 className='title is-1'>Blog system</h1>
         <Notification />
         {(user === null || '')
           ? loginForm()

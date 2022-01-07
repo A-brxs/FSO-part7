@@ -12,8 +12,8 @@ const Users = () => {
   }
   return (
     <div >
-      <h2>THIS IS THE USER PAGE</h2>
-      <table>
+      <h2 className='title is-2' >THIS IS THE USER PAGE</h2>
+      <table className='table is-hoverable has-background-success-light'>
         <tbody>
           <tr>
             <th></th>

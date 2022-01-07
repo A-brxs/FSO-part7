@@ -32,27 +32,29 @@ const BlogID = () => {
   if (!blog) return null
   return (
     <div >
-      <h2>{blog.title}</h2>
-      <ul>{blog.url}</ul>
-      <ul>{blog.likes}<button id='like-button' className='like-button' onClick={() => updateBlog()}>like</button></ul>
-      <ul>added by {blog.user.username}</ul>
-      {loggedinUser.username === blog.user.username &&
-        <button className='delete-button'id='delete-button' onClick={() => handleDelete()}>DELETE</button> }
-      <br/>
-      <br/>
-      <form onSubmit={addComment}>
-        <div>
-        comment: <input type="text" id='comment' name="comment" />
-        </div>
+      <h2 className='title is-2'>{blog.title}</h2>
+      <div className="content">
+        <ul>{blog.url}</ul>
+        <ul>{blog.likes}<button id='like-button' className='like-button' onClick={() => updateBlog()}>like</button></ul>
+        <ul>added by {blog.user.username}</ul>
+        {loggedinUser.username === blog.user.username &&
+          <button className='delete-button'id='delete-button' onClick={() => handleDelete()}>DELETE</button> }
         <br/>
-        <button type="submit" id='create-button'>comment</button>
-      </form>
-      <h3>comments</h3>
-      <ul>
-        {blog.comments.map( c => (
-          <li key={c.id}> {c.text} </li>
-        ))}
-      </ul>
+        <br/>
+        <form onSubmit={addComment}>
+          <div>
+          comment: <input type="text" id='comment' name="comment" />
+          </div>
+          <br/>
+          <button className='button is-success is-small' type="submit" id='create-button'>comment</button>
+        </form>
+        <h3 className='title is-3'>comments</h3>
+        <ul>
+          {blog.comments.map( c => (
+            <li key={c.id}> {c.text} </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 
