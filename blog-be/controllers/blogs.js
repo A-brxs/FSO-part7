@@ -36,6 +36,21 @@ blogsRouter.post('/', async (request, response, next) => {
   response.json(savedBlog)
 })
 
+blogsRouter.post('/:id/comment', async (request, response) => {
+  if (!request.body.comment) {
+    return response.status(401).json({ error: 'no comments' })
+  }
+  const comment = request.body.comment
+  const updatedBlog = await Blog.findByIdAndUpdate(
+    request.params.id,
+    {
+      $push: { comments: [{ text: comment[0].text }] }
+    },
+    { new: true, upsert: true }
+  )
+  response.json(updatedBlog.toJSON())
+})
+
 blogsRouter.delete('/:id', async (request,response) => {
   const user = request.user
   const blog = await Blog.findById(request.params.id)

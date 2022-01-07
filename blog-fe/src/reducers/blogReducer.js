@@ -25,6 +25,17 @@ export const likeFor = (blog) => {
   }
 }
 
+export const commentBlog = (id,data) => {
+  return async dispatch => {
+
+    const updatedBlog = await blogService.comment(id,data)
+    dispatch({
+      type: 'COMMENT_BLOG',
+      data: updatedBlog
+    })
+  }
+}
+
 export const initiateBlog = () => {
   return async dispatch => {
     const blogs = await blogService.getAll()
@@ -53,6 +64,12 @@ const blogReducer = (state = [initialData], action) => {
   case 'NEW_BLOG':
     return state.concat(action.data)
   case 'LIKE': {
+    const id = action.data.id
+    return state.map(a =>
+      a.id !== id ? a : action.data
+    )
+  }
+  case 'COMMENT_BLOG': {
     const id = action.data.id
     return state.map(a =>
       a.id !== id ? a : action.data

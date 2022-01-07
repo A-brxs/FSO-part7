@@ -4,7 +4,10 @@ import { useParams,Link } from 'react-router-dom'
 
 const UserID = () => {
   let { id } = useParams()
-  const user = useSelector( s => s.users.find( u => u.id === id ))
+  const users = useSelector( s => s.users)
+  if(!users) return null
+  const user = users.find( u => u.id === id )
+  if(!user) return null
   return (
     <div >
       <h2>{user.username}</h2>

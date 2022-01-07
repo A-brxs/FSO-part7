@@ -1,6 +1,11 @@
 GET http://localhost:3003/api/blogs
 
 ###
+GET http://localhost:3003/api/blogs HTTP/1.1
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikx1aXNEIiwiaWQiOiI2MWE1NDdmYWI5MTgwOWE4OWU0YmYxZWMiLCJpYXQiOjE2Mzg2Mzc3MjJ9.u1rO98PUFvGmJWvJnYh1olVeckinz5qBDLQiKoinSKo
+
+###
 
 POST http://localhost:3003/api/login HTTP/1.1
 Content-Type: application/json
@@ -26,6 +31,14 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikx1a
     "title": "DDDDD",
     "author": "Luis4AAAAA44",
     "url": "https://reddiasdasdat.com"
+}
+###
+POST http://localhost:3003/api/blogs/61d87fc9b537261eb3ba42eb/comment HTTP/1.1
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikx1aXNEIiwiaWQiOiI2MWE1NDdmYWI5MTgwOWE4OWU0YmYxZWMiLCJpYXQiOjE2Mzg2Mzc3MjJ9.u1rO98PUFvGmJWvJnYh1olVeckinz5qBDLQiKoinSKo
+
+{
+    "comment":  [{ "text": "this is NOT my COMMENT!!"}]
 }
 ###
 DELETE http://localhost:3003/api/blogs/61a560e72d21067b07aa705e HTTP/1.1
