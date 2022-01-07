@@ -15,7 +15,7 @@ export const likeFor = (blog) => {
   return async dispatch => {
 
     const likedBlog = {
-      likes: blog.likes + 1
+      likes: blog.likes + 1,
     }
     const updatedBlog = await blogService.like(blog.id,likedBlog)
     dispatch({
